@@ -18,13 +18,16 @@ Basic API usage looks like this:
 var c = new Continuation(100);
 c.AddJob(function(timer) {
     // do some work - use timer() to check how many ms we have left 
-    // in this time slice.
+    // in this time slice. If you decide you don't have enough time
+    // left, return a continuation function that finishes the job
+    // up. This continuation function will be the next job called,
+    // before any other jobs added via AddJob() run.
 });
 
 c.AddJob( ... do more work ...);
 
 // schedule the continuation: by default this runs one slice of work 
-// and offloads the rest (f any) to a later point in time. To get a 
+// and offloads the rest (if any) to a later point in time. To get a 
 // callback when the computation finishes, simply add it as a final job
 // using  AddJob().
 c.Schedule();
