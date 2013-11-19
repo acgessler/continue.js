@@ -34,6 +34,11 @@ c.schedule();
 ```
 For more information, see the API documentation in the source code.
 
+License
+====
+
+MIT, see the `LICENSE` file.
+
 Contributions
 ====
 
